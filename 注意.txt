@@ -1,5 +1,0 @@
-! Control the time to communicate 
-! 9£º30AM-12£º00AM
-! 2£º00PM-5£º30PM
-! 7£º00PM-9£º00PM
-! All  periods above is forbidden to chat ...
