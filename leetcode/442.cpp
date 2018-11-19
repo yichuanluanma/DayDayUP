@@ -69,7 +69,7 @@ class Solution{
 			return res;
 		}
 		/*
-		这个方法牛逼到看不懂。
+		这个方法牛逼。
 		*/
 };
 
