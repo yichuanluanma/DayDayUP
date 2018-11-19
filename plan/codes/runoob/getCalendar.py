@@ -14,3 +14,9 @@
  
  # 显示日历
  print(calendar.month(yy, mm))
+ 
+ # 计算每个月天数
+ monthRange = calendar.monthrange(yy, mm)
+ 
+ print(monthRange)
+ print("{0}年{1}的第一天是星期{2},当月总天数是{3}".format(yy,mm,monthRange[0]+1,monthRange[1]))
