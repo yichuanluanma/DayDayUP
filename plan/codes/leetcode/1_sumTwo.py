@@ -27,3 +27,9 @@
                  return (dict[target-nums[i]], i)
  
              dict[x] = i
+ 
+ if __name__ == '__main__':
+     s=Solution()
+     result = s.twoSum([1,5,2,7],9)
+     print(result)
+
