@@ -81,3 +81,26 @@ public:
         return (cur == sum) + sumUp(node->left, cur, sum) + sumUp(node->right, cur, sum);
     }
 };
+
+class Solution {
+public:
+    void pathnum(TreeNode* node, int sum, int target, int &res){
+        if(node){
+            if(sum+node->val==target) res++;
+            pathnum(node->left, sum+node->val, target, res);
+            pathnum(node->right, sum+node->val, target, res);
+        }   
+    }
+    void inorder(TreeNode *node, int target, int &res){
+        if(node) {
+            pathnum(node, 0, target, res);   
+            inorder(node->left, target, res);
+            inorder(node->right, target, res);
+        }
+    }
+    int pathSum(TreeNode* root, int sum) {
+        int cnt = 0;
+        inorder(root, sum, cnt);
+        return cnt;
+    }
+};
