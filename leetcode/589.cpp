@@ -33,7 +33,25 @@ public:
     }
 };
 //迭代
-
+class Solution {
+public:
+    vector<int> preorder(Node* root) {
+        vector<int> answer;
+        if(root==nullptr)
+            return answer;
+        stack<Node*> mystack;
+        mystack.push(root);
+        while(!mystack.empty()){
+            root=mystack.top();
+            mystack.pop();
+            answer.push_back(root->val);
+            if(!(root->children).empty())
+                for(int i=(root->children).size()-1;i>=0;--i)
+                    mystack.push((root->children)[i]);
+        }
+        return answer;
+    }
+};
 
 
 
