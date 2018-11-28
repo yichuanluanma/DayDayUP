@@ -18,13 +18,23 @@
          #            break
          #print(nums)
  
-         i = 0
-         while i < len(nums)-1:
-             if nums[i] == nums[i+1]:
-                 nums.remove(nums[i])
-             else:
-                 i=i+1
-         return len(nums)
+         #i = 0
+         #while i < len(nums)-1:
+         #    if nums[i] == nums[i+1]:
+         #        nums.remove(nums[i])
+         #    else:
+         #        i=i+1
+         #return len(nums)
+ 
+         if not nums:
+             return 0
+         j = 0
+         for i in range(1,len(nums)):
+             if nums[j] != nums[i]:
+                 j += 1
+                 nums[j] = nums[i]
+         return j+1
+
  
  if __name__ == '__main__':
      s = Solution()
