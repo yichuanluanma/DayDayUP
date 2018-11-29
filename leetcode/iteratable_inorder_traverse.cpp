@@ -11,4 +11,30 @@
 			stack.pop();
 		}
 	}
+	// 以 root 为核心，栈是个辅助的类别
+
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> res;
+        stack<TreeNode*> s;
+        TreeNode* cur=root;
+        while(!s.empty() ||cur){
+            if(cur){
+                s.push(cur);
+                cur=cur->left;
+            }
+            else{
+                cur=s.top();
+                res.push_back(cur->val);
+                s.pop();
+                if(cur->right){
+                    //s.push(cur);
+                    cur=cur->right;
+                }
+                else cur=NULL;
+            }
+        }
+        return res;
+    }
 
