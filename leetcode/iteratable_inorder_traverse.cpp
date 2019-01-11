@@ -1,4 +1,4 @@
-	vector<int> valSet;
+{	vector<int> valSet;
 	stack<TreeNode*> stack;
 	while(root || !stack.empty()){  //迭代求得中序遍历
 		while(root){
@@ -11,6 +11,7 @@
 			stack.pop();
 		}
 	}
+}
 	// 以 root 为核心，栈是个辅助的类别
 
 class Solution {
