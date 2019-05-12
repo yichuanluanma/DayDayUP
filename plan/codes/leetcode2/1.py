@@ -1,35 +1,21 @@
-# -*- coding: UTF-8 -*-
+# coding=utf-8
+"""
+两数之和
+描述：
+给定一个整数数组 nums 和一个目标值 target，
+请你在该数组中找出和为目标值的那 两个 整数，
+并返回他们的数组下标。
+"""
 
-# Filename: sumTwo.py
-# author by: Lexi
-
-# 求两数之和
 
 class Solution:
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        # 方法一
-        # 暴力破解法
-        # for i in range(len(nums)):
-        #    for j in range(len(nums)):
-        #        if nums[i] + nums[j] == target:
-        #            return (i,j)
+    def towSum(self, nums, target):
+        dic = {}
+        for i, num in enumerate(nums):
+            if target - num in dic:
+                return [dic[target - num], i]
+            dic[num] = i
 
-        dict = {}
-        for i in range(len(nums)):
-            x = nums[i]
-            if target - x in dict:
-                return (dict[target - nums[i]], i)
-
-            dict[x] = i
-
-
-if __name__ == '__main__':
-    s = Solution()
-    result = s.twoSum([1, 5, 2, 7], 9)
-    print(result)
-
+s = Solution()
+res = s.towSum([2,7,11,5], 9)
+print(res)
