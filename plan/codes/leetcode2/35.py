@@ -19,7 +19,7 @@ class Solution:
                 left = mid + 1
             else:
                 right = mid - 1
-        if target > mid[left]:
+        if target > nums[left]:
             return left + 1
         else:
             return left
