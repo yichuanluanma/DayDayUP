@@ -1,0 +1,12 @@
+学习nodejs
+1. 项目开发命令行：
+export NODE_ENV=dev
+node index.js
+
+2. NPM
+NPM是随同NodeJS一起安装的包管理工具
+初始化nodejs：npm init
+
+3. Node.js EventEmitter
+EventEmitter 提供了多个属性，如 on 和 emit。on 函数用于绑定事件函数，emit 属性用于触发一个事件。
+
