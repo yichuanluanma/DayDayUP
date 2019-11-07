@@ -10,3 +10,18 @@ NPM是随同NodeJS一起安装的包管理工具
 3. Node.js EventEmitter
 EventEmitter 提供了多个属性，如 on 和 emit。on 函数用于绑定事件函数，emit 属性用于触发一个事件。
 
+4.Promise函数
+
+
+5.yield的使用
+co的执行过程的核心就是next方法( co里定义的而非Gen.next() )的递归调用。
+co的作用将异步回调方式变温比较容易维护的同步风格，在异步方法调用前使用yield关键字，代码执行到这里就会暂停，知道回调完毕才继续向下执行。
+co 库最早实现异步编程同步化的功能。通过co(function *(){})可以使函数内部通过迭代器来控制。
+
+6.async/await 函数实现异步操作
+await 关键字的作用与generator 函数的yield 作用相类似。
+co 函数库约定，yield 命令后面只能是 Thunk 函数或 Promise 对象，而 async 函数的 await 命令后面，可以跟 Promise 对象和原始类型的值（数值、字符串和布尔值，但这时等同于同步操作）。
+
+
+
+
