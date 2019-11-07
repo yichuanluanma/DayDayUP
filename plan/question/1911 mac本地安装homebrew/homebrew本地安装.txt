@@ -1,0 +1,23 @@
+Homebrew本地安装：
+macOS预装了ruby，可以直接开个shell运行，curl是一个开源的文件传输工具，curl会通过url：
+https://raw.githubusercontent.com/Homebrew/install/master/install
+拿到一个ruby的运行脚本，然后ruby会执行这个脚本，这个脚本里包含了homebrew的具体下载地址，ruby会通过具体地址下载homebrew并安装，问题就出在脚本中的homebrew中的下载地址。
+本文件中已下载该运行脚本：install.txt（有无后缀不影响）
+下面就是这个install文件内的homebrew的下载地址：
+BREW_REPO = "https://github.com/Homebrew/brew".freeze
+
+1. 修改镜像源
+将
+BREW_REPO = "https://github.com/Homebrew/brew".freeze
+修改为（如果没有找到的CORE_TAP_REPO的话直接复制）
+BREW_REPO = "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git".freeze
+CORE_TAP_REPO = "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git".freeze
+
+2. 通过脚本安装brew
+ruby install.txt
+安装过程10分钟左右
+
+
+参考链接：
+https://segmentfault.com/a/1190000016114955
+https://www.cnblogs.com/narutoNinja/p/11168588.html
