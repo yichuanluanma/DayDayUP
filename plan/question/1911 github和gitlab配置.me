@@ -1,0 +1,57 @@
+1、搜多如何删除全局 git global unset user.name ...user.email ....
+2、ssh -T git@gitlab.com 出现错误认证次数太多的原因
+ssh-add -l 查看所有秘钥，秘钥太多，可能是known_hosts里有多余的秘钥
+ssh -T git@github.com 太慢，有时无反应 ==>网络原因，域名解析太慢
+
+
+Mac电脑同时安装两个git账号（github/gitlab）：
+1.生成第一个gitlab key
+cd ~/.ssh
+ssh-keygen -t rsa -C "公司gitlab的邮箱"
+生成的文件存储在~/.ssh/id_rsa，在~/.ssh下就可以看到有两个文件id_rsa和id_rsa.pub。
+登录公司的gitlab账号，将id_rsa.pub中的内容复制到gitlab中的SSH框中，在setting->SSH keys->key，title随便取一个名字。接下来：
+ssh-add ~/.ssh/id_rsa
+
+2.生成第二个github key
+cd ~/.ssh
+ssh-keygen -t rsa -C "个人github的邮箱"
+Enter file in which to save the key (/Users/admin/.ssh/id_rsa): /Users/admin/.ssh/id_rsa_github
+将新生成的公钥id_rsa_github放置个人账号的github的ssh框中，在setting->SSH and GPG keys->new SSH key
+。
+由于ssh-agent默认只识别id_rsa，因此还需要添加秘钥id_rsa_github，如下：
+ssh-add ~/.ssh/id_rsa_github
+
+3.配置~/.ssh/config文件
+vim ~/.ssh/config
+
+# 公司账号邮箱
+Host code.xxx.io
+HostName code.xxx.io
+User 公司账号name
+IdentityFile ~/.ssh/id_rsa
+
+# 个人账号邮箱
+Host github.com
+HostName github.com
+User 个人账号name
+IdentityFile ~/.ssh/id_rsa_github
+
+4.远程测试
+ssh -T git@code.xxx.io
+ssh -T git@github.com
+
+5. clone代码到本地
+进入具体项目中，为仓库设置局部的用户名和邮箱：
+# 取消全局 用户名/邮箱 配置
+git config --global --unset user.name
+git config --global --unset user.email
+    
+# 单独为每个repo设置 用户名/邮箱
+git config user.name "myself_name"
+git config user.email "myself_email"
+提示：因公司项目过多，将公司的user.name,user.email设置为全局变量，从而避免一一设置；将个人账号设置为局部变量。
+在git中，我们使用git config 命令用来配置git的配置文件，git配置级别主要有以下3类：
+1、仓库级别 local 【优先级最高】git config --local -l 查看仓库配置
+2、用户级别 global【优先级次之】git config --global -l 查看用户配置
+3、系统级别 system【优先级最低】git config --system -l 查看系统配置
+git config -l查看所有的配置信息，依次是系统级别、用户级别、仓库级别。
